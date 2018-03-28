@@ -68,15 +68,28 @@ open class LocationAnnotationNode: LocationNode {
     ///For landmarks in the distance, the default is correct
     public var scaleRelativeToDistance = false
     
-    public init(location: CLLocation?, image: UIImage) {
+    public init(location: CLLocation?, image: UIImage, text: NSString? = nil) {
         self.image = image
         
-        let plane = SCNPlane(width: image.size.width / 100, height: image.size.height / 100)
+        let plane = SCNPlane(width: image.size.width / 1000, height: image.size.height / 1000)
         plane.firstMaterial!.diffuse.contents = image
         plane.firstMaterial!.lightingModel = .constant
         
         annotationNode = SCNNode()
         annotationNode.geometry = plane
+        
+        if (text != nil) {
+            let newText = SCNText(string: text, extrusionDepth:0)
+            newText.font = UIFont (name: "Arial", size: 3)
+            newText.firstMaterial!.diffuse.contents = UIColor.red
+            newText.firstMaterial!.specular.contents = UIColor.red
+            
+            let textNode = SCNNode(geometry: newText)
+            textNode.scale = SCNVector3Make(0.1, 0.1, 0.1)
+            textNode.position = SCNVector3Make(0, 0, 0)
+            
+            annotationNode.addChildNode(textNode)
+        }
         
         super.init(location: location)
         

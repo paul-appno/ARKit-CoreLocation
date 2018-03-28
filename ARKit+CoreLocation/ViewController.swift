@@ -66,11 +66,39 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
             sceneLocationView.showFeaturePoints = true
         }
         
-        //Currently set to Canary Wharf
-        let pinCoordinate = CLLocationCoordinate2D(latitude: 51.504607, longitude: -0.019592)
-        let pinLocation = CLLocation(coordinate: pinCoordinate, altitude: 236)
+        //Sulphur pits
+        var pinCoordinate = CLLocationCoordinate2D(latitude: 49.293405, longitude:  -123.113084)
+        var pinLocation = CLLocation(coordinate: pinCoordinate, altitude: -200)
         let pinImage = UIImage(named: "pin")!
-        let pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage)
+        var pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage, text: "Sulphur pits")
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
+        
+        //Canada Place
+        pinCoordinate = CLLocationCoordinate2D(latitude: 49.288439, longitude:  -123.111920)
+        pinLocation = CLLocation(coordinate: pinCoordinate, altitude: -200)
+//        pinImage = UIImage(named: "pin")!
+        pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage, text: "Canada Place")
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
+        
+        //Capilano Bridge
+//        pinCoordinate = CLLocationCoordinate2D(latitude: 49.342806, longitude: -123.114766)
+//        pinLocation = CLLocation(coordinate: pinCoordinate, altitude: 50)
+//        //        pinImage = UIImage(named: "pin")!
+//        pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage, text: "Capilano Bridge")
+//        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
+        
+        //Shipping docks
+        pinCoordinate = CLLocationCoordinate2D(latitude: 49.289415, longitude: -123.098637)
+        pinLocation = CLLocation(coordinate: pinCoordinate, altitude: -100)
+        //        pinImage = UIImage(named: "pin")!
+        pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage, text: "Shipping docks")
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
+        
+        //Crab Park at Portside
+        pinCoordinate = CLLocationCoordinate2D(latitude: 49.285167, longitude: -123.102146)
+        pinLocation = CLLocation(coordinate: pinCoordinate, altitude: -50)
+        //        pinImage = UIImage(named: "pin")!
+        pinLocationNode = LocationAnnotationNode(location: pinLocation, image: pinImage, text: "Crab Park at Portside")
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: pinLocationNode)
         
         view.addSubview(sceneLocationView)
